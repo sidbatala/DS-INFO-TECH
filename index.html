@@ -1,46 +1,152 @@
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+<!DOCTYPE html>
+<html lang="en">
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    const isDarkTheme = body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-    themeToggle.innerHTML = isDarkTheme ? '☀️' : '🌙';
-});
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DS INFO TECH</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+</head>
 
-// Load saved theme
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-theme');
-    themeToggle.innerHTML = '☀️';
-} else {
-    body.classList.remove('dark-theme');
-    themeToggle.innerHTML = '🌙';
-}
+<body class="light-theme">
+    <!-- Loader Section -->
+    <div class="loader-container">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="32"></circle>
+            </svg>
+        </div>
+        <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+        </div>
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64"></rect>
+            </svg>
+        </div>
+    </div>
 
-// Toggle QR Code and Show Message
-function toggleQR(qrId, messageId) {
-    const qrCode = document.getElementById(qrId);
-    const screenshotMessage = document.getElementById(messageId);
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">DS INFO TECH</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    if (qrCode.style.display === 'none' || qrCode.style.display === '') {
-        // Show QR Code
-        qrCode.style.display = 'flex';
-        screenshotMessage.style.display = 'none';
-    } else {
-        // Hide QR Code and Show Message
-        qrCode.style.display = 'none';
-        screenshotMessage.style.display = 'flex';
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Welcome to DS INFO TECH</h1>
+            <p>Innovative Software Solutions for Busy People!</p>
+            <button onclick="location.href='#contact'">Get in Touch</button>
+        </div>
+    </section>
 
-        // Redirect to WhatsApp when message is clicked
-        screenshotMessage.addEventListener('click', () => {
-            window.open(`https://wa.me/9803282511?text=Here%20is%20the%20screenshot%20of%20the%20payment.`, '_blank');
-        });
-    }
-}
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <!-- Busy21 Software -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/x8YPrXQ7/busy-21-business-accounting-software.jpg" alt="Busy21 Software">
+                        <div class="qr-code" id="qr-busy21">
+                            <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
+                        </div>
+                        <div class="screenshot-message" id="screenshot-busy21">
+                            <p>Click here to send screenshot</p>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Busy21 Software</h3>
+                        <p>Manage your business effortlessly with Busy21 software. Ideal for growing enterprises.</p>
+                        <p class="price">Price: Rs 5000</p>
+                        <button class="purchase-btn" onclick="toggleQR('qr-busy21', 'screenshot-busy21')">Pay Now</button>
+                    </div>
+                </div>
 
-// Hide Loader
-window.onload = function () {
-    document.querySelector('.loader-container').style.display = 'none';
-};
+                <!-- Windows 11 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/20kbHwMq/ne6ukkej06t71.png" alt="Windows 11">
+                        <div class="qr-code" id="qr-windows11">
+                            <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
+                        </div>
+                        <div class="screenshot-message" id="screenshot-windows11">
+                            <p>Click here to send screenshot</p>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Windows 11</h3>
+                        <p>Get the latest Windows 11 for a better user experience and enhanced performance.</p>
+                        <p class="price">Price: Rs 1500</p>
+                        <button class="purchase-btn" onclick="toggleQR('qr-windows11', 'screenshot-windows11')">Pay Now</button>
+                    </div>
+                </div>
+
+                <!-- MS Office -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/357prGBp/office-365-14.png" alt="MS Office">
+                        <div class="qr-code" id="qr-msoffice">
+                            <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
+                        </div>
+                        <div class="screenshot-message" id="screenshot-msoffice">
+                            <p>Click here to send screenshot</p>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>MS Office</h3>
+                        <p>Enhance productivity with MS Office solutions tailored to your needs.</p>
+                        <p class="price">Price: Rs 1000</p>
+                        <button class="purchase-btn" onclick="toggleQR('qr-msoffice', 'screenshot-msoffice')">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>For more information or inquiries, reach out to us:</p>
+            <ul>
+                <li><strong>Address:</strong> Kathmandu, Nepal</li>
+                <li><strong>WhatsApp:</strong> <a href="https://wa.me/9803282511">9803282511</a></li>
+                <li>
+                    <strong>Email:</strong>
+                    <a href="mailto:sidbatala@gmail.com">
+                        <i class="fas fa-envelope"></i> sidbatala@gmail.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DS INFO TECH | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
