@@ -76,8 +76,12 @@
                     </div>
                     <div class="product-info">
                         <h3>Busy21 Software</h3>
-                        <p>Manage your business effortlessly with Busy21 software. Ideal for growing enterprises.</p>
-                        <p class="price">Price: Rs 5000</p>
+                        <p>Manage your business effortlessly with Busy21 software. Choose the plan that suits you:</p>
+                        <ul class="pricing-plans">
+                            <li><strong>Basic:</strong> Rs 3000</li>
+                            <li><strong>Standard:</strong> Rs 4000</li>
+                            <li><strong>Enterprise:</strong> Rs 5000</li>
+                        </ul>
                         <button class="purchase-btn" onclick="toggleQR('qr-busy21', 'screenshot-busy21')">Pay Now</button>
                     </div>
                 </div>
@@ -127,17 +131,29 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact Us</h2>
-            <p>For more information or inquiries, reach out to us:</p>
-            <ul>
-                <li><strong>Address:</strong> Kathmandu, Nepal</li>
-                <li><strong>WhatsApp:</strong> <a href="https://wa.me/9803282511">9803282511</a></li>
-                <li>
-                    <strong>Email:</strong>
-                    <a href="mailto:sidbatala@gmail.com">
-                        <i class="fas fa-envelope"></i> sidbatala@gmail.com
-                    </a>
-                </li>
-            </ul>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>For more information or inquiries, reach out to us:</p>
+                    <ul>
+                        <li><strong>Address:</strong> Kathmandu, Nepal</li>
+                        <li><strong>WhatsApp:</strong> <a href="https://wa.me/9803282511">9803282511</a></li>
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:sidbatala@gmail.com">
+                                <i class="fas fa-envelope"></i> sidbatala@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
