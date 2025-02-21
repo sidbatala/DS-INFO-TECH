@@ -38,7 +38,15 @@
             <a href="#" class="logo">DS INFO TECH</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
+                <li class="dropdown">
+                    <a href="#services">Products <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#busy21">Busy21 Software</a></li>
+                        <li><a href="#windows11">Windows 11</a></li>
+                        <li><a href="#msoffice">MS Office</a></li>
+                        <li><a href="#coming-soon">More Coming Soon</a></li>
+                    </ul>
+                </li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <button id="theme-toggle" class="theme-toggle">
@@ -51,6 +59,22 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="clock-date">
+            <div id="clock"></div>
+            <div id="date"></div>
+        </div>
+        <ul class="bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
         <div class="hero-text">
             <h1>Welcome to DS INFO TECH</h1>
             <p>Innovative Software Solutions for Busy People!</p>
@@ -64,7 +88,7 @@
             <h2>Our Products</h2>
             <div class="product-grid">
                 <!-- Busy21 Software -->
-                <div class="product-card">
+                <div class="product-card" id="busy21">
                     <div class="product-image-wrapper">
                         <img src="https://i.ibb.co/x8YPrXQ7/busy-21-business-accounting-software.jpg" alt="Busy21 Software" class="product-image">
                         <div class="qr-code" id="qr-busy21">
@@ -88,7 +112,7 @@
                 </div>
 
                 <!-- Windows 11 -->
-                <div class="product-card">
+                <div class="product-card" id="windows11">
                     <div class="product-image-wrapper">
                         <img src="https://i.ibb.co/20kbHwMq/ne6ukkej06t71.png" alt="Windows 11" class="product-image">
                         <div class="qr-code" id="qr-windows11">
@@ -107,7 +131,7 @@
                 </div>
 
                 <!-- MS Office -->
-                <div class="product-card">
+                <div class="product-card" id="msoffice">
                     <div class="product-image-wrapper">
                         <img src="https://i.ibb.co/357prGBp/office-365-14.png" alt="MS Office" class="product-image">
                         <div class="qr-code" id="qr-msoffice">
@@ -122,6 +146,18 @@
                         <p>Enhance productivity with MS Office solutions tailored to your needs.</p>
                         <p class="price">Price: Rs 1000</p>
                         <button class="purchase-btn" onclick="toggleQR('qr-msoffice', 'screenshot-msoffice')">Pay Now</button>
+                    </div>
+                </div>
+
+                <!-- More Products Coming Soon -->
+                <div class="product-card" id="coming-soon">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/CKN94sHr/Red-and-White-Modern-Tech-Coming-Soon-Instagram-Post.png" alt="Coming Soon" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>More Products Coming Soon</h3>
+                        <p>Stay tuned for exciting new software solutions!</p>
+                        <button class="purchase-btn" disabled>Coming Soon</button>
                     </div>
                 </div>
             </div>
@@ -160,8 +196,19 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 DS INFO TECH | All Rights Reserved</p>
+        <div class="container">
+            <p>&copy; 2025 DS INFO TECH | All Rights Reserved</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">↑</button>
 
     <script src="script.js"></script>
 </body>
