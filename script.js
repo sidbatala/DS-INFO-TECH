@@ -40,6 +40,14 @@ function toggleQR(qrId, messageId) {
     }
 }
 
+// Update Price for Busy21 Software
+function updatePrice(productId) {
+    const modeSelect = document.getElementById(`${productId}-mode`);
+    const priceElement = document.getElementById(`${productId}-price`);
+    const selectedPrice = modeSelect.value;
+    priceElement.textContent = `Price: Rs ${selectedPrice}`;
+}
+
 // Hide Loader
 window.onload = function () {
     document.querySelector('.loader-container').style.display = 'none';
