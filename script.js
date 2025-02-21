@@ -35,7 +35,7 @@ function toggleQR(qrId, messageId) {
 
         // Redirect to WhatsApp when message is clicked
         screenshotMessage.addEventListener('click', () => {
-            window.open(`https://wa.me/9803282511?text=Here%20is%20the%20screenshot%20of%20the%20payment.`, '_blank');
+            window.open(`https://wa.me/1234567890?text=Here%20is%20the%20screenshot%20of%20the%20payment.`, '_blank');
         });
     }
 }
