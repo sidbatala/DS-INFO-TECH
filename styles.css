@@ -244,6 +244,11 @@ nav .nav-links a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.1);
 }
 
 .qr-code {
@@ -311,15 +316,15 @@ nav .nav-links a:hover {
     margin-bottom: 1rem;
 }
 
-.pricing-plans {
-    list-style: none;
-    padding: 0;
+.mode-select {
+    width: 100%;
+    padding: 0.8rem;
     margin-bottom: 1rem;
-}
-
-.pricing-plans li {
-    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }
 
 .price {
