@@ -66,7 +66,7 @@
                 <!-- Busy21 Software -->
                 <div class="product-card">
                     <div class="product-image-wrapper">
-                        <img src="https://i.ibb.co/x8YPrXQ7/busy-21-business-accounting-software.jpg" alt="Busy21 Software">
+                        <img src="https://i.ibb.co/x8YPrXQ7/busy-21-business-accounting-software.jpg" alt="Busy21 Software" class="product-image">
                         <div class="qr-code" id="qr-busy21">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
@@ -77,11 +77,12 @@
                     <div class="product-info">
                         <h3>Busy21 Software</h3>
                         <p>Manage your business effortlessly with Busy21 software. Choose the plan that suits you:</p>
-                        <ul class="pricing-plans">
-                            <li><strong>Basic:</strong> Rs 3000</li>
-                            <li><strong>Standard:</strong> Rs 4000</li>
-                            <li><strong>Enterprise:</strong> Rs 5000</li>
-                        </ul>
+                        <select id="busy21-mode" class="mode-select" onchange="updatePrice('busy21')">
+                            <option value="3000">Basic - Rs 3000</option>
+                            <option value="4000">Standard - Rs 4000</option>
+                            <option value="5000">Enterprise - Rs 5000</option>
+                        </select>
+                        <p class="price" id="busy21-price">Price: Rs 3000</p>
                         <button class="purchase-btn" onclick="toggleQR('qr-busy21', 'screenshot-busy21')">Pay Now</button>
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                 <!-- Windows 11 -->
                 <div class="product-card">
                     <div class="product-image-wrapper">
-                        <img src="https://i.ibb.co/20kbHwMq/ne6ukkej06t71.png" alt="Windows 11">
+                        <img src="https://i.ibb.co/20kbHwMq/ne6ukkej06t71.png" alt="Windows 11" class="product-image">
                         <div class="qr-code" id="qr-windows11">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
@@ -108,7 +109,7 @@
                 <!-- MS Office -->
                 <div class="product-card">
                     <div class="product-image-wrapper">
-                        <img src="https://i.ibb.co/357prGBp/office-365-14.png" alt="MS Office">
+                        <img src="https://i.ibb.co/357prGBp/office-365-14.png" alt="MS Office" class="product-image">
                         <div class="qr-code" id="qr-msoffice">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
