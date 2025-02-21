@@ -48,6 +48,53 @@ function updatePrice(productId) {
     priceElement.textContent = `Price: Rs ${selectedPrice}`;
 }
 
+// Back to Top Button
+window.addEventListener('scroll', () => {
+    const backToTop = document.getElementById('back-to-top');
+    if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+    } else {
+        backToTop.style.display = 'none';
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Clock and Date
+function updateClock() {
+    const clockElement = document.getElementById('clock');
+    const dateElement = document.getElementById('date');
+    const now = new Date();
+
+    // Format time (HH:MM:SS)
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
+    // Format date (Day, DD Month YYYY)
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const dayName = days[now.getDay()];
+    const day = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const dateString = `${dayName}, ${day} ${month} ${year}`;
+
+    // Update elements
+    clockElement.textContent = timeString;
+    dateElement.textContent = dateString;
+}
+
+// Update clock every second
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+
 // Hide Loader
 window.onload = function () {
     document.querySelector('.loader-container').style.display = 'none';
