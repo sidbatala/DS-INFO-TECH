@@ -17,6 +17,8 @@ body {
     --primary-color: #6c63ff;
     --primary-hover: #574fdb;
     --accent-color: #ff6b6b;
+    --soft-blue: #a8d8ea;
+    --soft-pink: #ff9a9e;
 }
 
 .dark-theme {
@@ -27,6 +29,8 @@ body {
     --primary-color: #8a85ff;
     --primary-hover: #6c63ff;
     --accent-color: #ff6b6b;
+    --soft-blue: #4a90e2;
+    --soft-pink: #ff6b6b;
 }
 
 .container {
@@ -130,13 +134,20 @@ nav .nav-links a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero-text h1 {
@@ -300,6 +311,17 @@ nav .nav-links a:hover {
     margin-bottom: 1rem;
 }
 
+.pricing-plans {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.pricing-plans li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
 .price {
     font-size: 1.2rem;
     font-weight: 600;
@@ -326,37 +348,84 @@ nav .nav-links a:hover {
     background-color: var(--card-bg);
     color: var(--text-color);
     padding: 4rem 0;
-    text-align: center;
 }
 
 .contact h2 {
+    text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     animation: fadeIn 1s ease-in-out;
 }
 
-.contact ul {
+.contact-content {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info ul {
     list-style: none;
     padding: 0;
 }
 
-.contact ul li {
+.contact-info ul li {
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
 
-.contact ul li a {
+.contact-info ul li a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.contact ul li a:hover {
+.contact-info ul li a:hover {
     color: var(--accent-color);
 }
 
-.contact ul li i {
+.contact-info ul li i {
     margin-right: 0.5rem;
+}
+
+.contact-form {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    padding: 0.8rem 2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: var(--primary-hover);
 }
 
 /* Footer */
