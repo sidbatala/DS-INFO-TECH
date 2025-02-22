@@ -19,25 +19,43 @@ if (savedTheme === 'dark') {
     themeToggle.innerHTML = '🌙';
 }
 
-// Toggle QR Code and Show Message
-function toggleQR(qrId, messageId) {
+// Toggle QR Code and Show Screenshot Button
+function toggleQR(qrId) {
     const qrCode = document.getElementById(qrId);
-    const screenshotMessage = document.getElementById(messageId);
+    const productId = qrId.split('-')[1];
+    const screenshotBtn = document.getElementById(`screenshot-btn-${productId}`);
 
     if (qrCode.style.display === 'none' || qrCode.style.display === '') {
         // Show QR Code
         qrCode.style.display = 'flex';
-        screenshotMessage.style.display = 'none';
+        screenshotBtn.style.display = 'block';
     } else {
-        // Hide QR Code and Show Message
+        // Hide QR Code
         qrCode.style.display = 'none';
-        screenshotMessage.style.display = 'flex';
-
-        // Redirect to WhatsApp when message is clicked
-        screenshotMessage.addEventListener('click', () => {
-            window.open(`https://wa.me/9803282511?text=Here%20is%20the%20screenshot%20of%20the%20payment.`, '_blank');
-        });
+        screenshotBtn.style.display = 'none';
     }
+}
+
+// Send Screenshot and Show Thanks Message
+function sendScreenshot(productId) {
+    const screenshotBtn = document.getElementById(`screenshot-btn-${productId}`);
+    const thanksMessage = document.getElementById(`thanks-${productId}`);
+
+    // Hide Screenshot Button and Show Thanks Message
+    screenshotBtn.style.display = 'none';
+    thanksMessage.style.display = 'block';
+
+    // Hide Thanks Message after 2 seconds with fade-out animation
+    setTimeout(() => {
+        thanksMessage.classList.add('fade-out');
+        setTimeout(() => {
+            thanksMessage.style.display = 'none';
+            thanksMessage.classList.remove('fade-out');
+        }, 500); // Fade-out duration
+    }, 2000); // Display duration
+
+    // Redirect to WhatsApp
+    window.open(`https://wa.me/9803282511?text=Here%20is%20the%20screenshot%20of%20the%20payment%20for%20${productId}.%20My%20AnyDesk%20ID%20is%20[Your%20AnyDesk%20ID].%20Please%20proceed%20with%20the%20installation.`, '_blank');
 }
 
 // Update Price for Busy21 Software
