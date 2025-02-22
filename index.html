@@ -51,9 +51,13 @@
                 </li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <button id="theme-toggle" class="theme-toggle">
-                        <span class="theme-icon">🌙</span>
-                    </button>
+                    <div class="theme-toggle-container">
+                        <label class="theme-toggle" id="theme-toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="mode-text">Light Mode</span>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -228,11 +232,14 @@
                     </ul>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <form method="POST" id="form">
+                        <input type="hidden" name="access_key" value="d2575a55-86d0-47cc-9a8f-29970efa6d84">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <button type="submit">Send Message</button>
+                        <div id="result"></div>
                     </form>
                 </div>
             </div>
@@ -254,6 +261,11 @@
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Paper Plane Animation -->
+    <div id="paper-plane" class="paper-plane">
+        <i class="fas fa-paper-plane"></i>
+    </div>
 
     <script src="script.js"></script>
 </body>
