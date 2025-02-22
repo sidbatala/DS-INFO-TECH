@@ -1,22 +1,25 @@
 // Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
+const themeToggle = document.querySelector('.theme-toggle input');
 const body = document.body;
+const modeText = document.querySelector('.mode-text');
 
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('change', () => {
     body.classList.toggle('dark-theme');
     const isDarkTheme = body.classList.contains('dark-theme');
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-    themeToggle.innerHTML = isDarkTheme ? '☀️' : '🌙';
+    modeText.textContent = isDarkTheme ? 'Dark Mode' : 'Light Mode';
 });
 
 // Load saved theme
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     body.classList.add('dark-theme');
-    themeToggle.innerHTML = '☀️';
+    themeToggle.checked = true;
+    modeText.textContent = 'Dark Mode';
 } else {
     body.classList.remove('dark-theme');
-    themeToggle.innerHTML = '🌙';
+    themeToggle.checked = false;
+    modeText.textContent = 'Light Mode';
 }
 
 // Toggle QR Code and Show Screenshot Button
@@ -117,3 +120,49 @@ updateClock(); // Initial call
 window.onload = function () {
     document.querySelector('.loader-container').style.display = 'none';
 };
+
+// Contact Form Submission
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.innerHTML = "Please wait...";
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+    })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = "Form submitted successfully";
+                // Show paper plane animation
+                const paperPlane = document.getElementById('paper-plane');
+                paperPlane.style.display = 'block';
+                setTimeout(() => {
+                    paperPlane.style.display = 'none';
+                }, 2000); // Hide after 2 seconds
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function () {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
+});
