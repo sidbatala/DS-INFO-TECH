@@ -44,6 +44,8 @@
                         <li><a href="#busy21">Busy21 Software</a></li>
                         <li><a href="#windows11">Windows 11</a></li>
                         <li><a href="#msoffice">MS Office</a></li>
+                        <li><a href="#tallyerp9">Tally ERP 9</a></li>
+                        <li><a href="#chequewriter">Cheque Writer</a></li>
                         <li><a href="#coming-soon">More Coming Soon</a></li>
                     </ul>
                 </li>
@@ -94,9 +96,6 @@
                         <div class="qr-code" id="qr-busy21">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
-                        <div class="screenshot-message" id="screenshot-busy21">
-                            <p>Click here to send screenshot</p>
-                        </div>
                     </div>
                     <div class="product-info">
                         <h3>Busy21 Software</h3>
@@ -107,7 +106,11 @@
                             <option value="5000">Enterprise - Rs 5000</option>
                         </select>
                         <p class="price" id="busy21-price">Price: Rs 3000</p>
-                        <button class="purchase-btn" onclick="toggleQR('qr-busy21', 'screenshot-busy21')">Pay Now</button>
+                        <button class="purchase-btn" onclick="toggleQR('qr-busy21')">Pay Now</button>
+                        <button class="screenshot-btn" id="screenshot-btn-busy21" onclick="sendScreenshot('busy21')">
+                            Click here to send Screenshot & AnyDesk ID, installation message - installation will be done with AnyDesk after payment receipt
+                        </button>
+                        <p class="thanks-message" id="thanks-busy21">Thanks for your payment!</p>
                     </div>
                 </div>
 
@@ -118,15 +121,16 @@
                         <div class="qr-code" id="qr-windows11">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
-                        <div class="screenshot-message" id="screenshot-windows11">
-                            <p>Click here to send screenshot</p>
-                        </div>
                     </div>
                     <div class="product-info">
                         <h3>Windows 11</h3>
                         <p>Get the latest Windows 11 for a better user experience and enhanced performance.</p>
                         <p class="price">Price: Rs 1500</p>
-                        <button class="purchase-btn" onclick="toggleQR('qr-windows11', 'screenshot-windows11')">Pay Now</button>
+                        <button class="purchase-btn" onclick="toggleQR('qr-windows11')">Pay Now</button>
+                        <button class="screenshot-btn" id="screenshot-btn-windows11" onclick="sendScreenshot('windows11')">
+                            Click here to send Screenshot & AnyDesk ID, installation message - installation will be done with AnyDesk after payment receipt
+                        </button>
+                        <p class="thanks-message" id="thanks-windows11">Thanks for your payment!</p>
                     </div>
                 </div>
 
@@ -137,15 +141,56 @@
                         <div class="qr-code" id="qr-msoffice">
                             <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
                         </div>
-                        <div class="screenshot-message" id="screenshot-msoffice">
-                            <p>Click here to send screenshot</p>
-                        </div>
                     </div>
                     <div class="product-info">
                         <h3>MS Office</h3>
                         <p>Enhance productivity with MS Office solutions tailored to your needs.</p>
                         <p class="price">Price: Rs 1000</p>
-                        <button class="purchase-btn" onclick="toggleQR('qr-msoffice', 'screenshot-msoffice')">Pay Now</button>
+                        <button class="purchase-btn" onclick="toggleQR('qr-msoffice')">Pay Now</button>
+                        <button class="screenshot-btn" id="screenshot-btn-msoffice" onclick="sendScreenshot('msoffice')">
+                            Click here to send Screenshot & AnyDesk ID, installation message - installation will be done with AnyDesk after payment receipt
+                        </button>
+                        <p class="thanks-message" id="thanks-msoffice">Thanks for your payment!</p>
+                    </div>
+                </div>
+
+                <!-- Tally ERP 9 -->
+                <div class="product-card" id="tallyerp9">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/B532XSCX/tally-accounting-software.png" alt="Tally ERP 9" class="product-image">
+                        <div class="qr-code" id="qr-tallyerp9">
+                            <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Tally ERP 9</h3>
+                        <p>Comprehensive accounting software for businesses.</p>
+                        <p class="price">Price: Rs 3000</p>
+                        <button class="purchase-btn" onclick="toggleQR('qr-tallyerp9')">Pay Now</button>
+                        <button class="screenshot-btn" id="screenshot-btn-tallyerp9" onclick="sendScreenshot('tallyerp9')">
+                            Click here to send Screenshot & AnyDesk ID, installation message - installation will be done with AnyDesk after payment receipt
+                        </button>
+                        <p class="thanks-message" id="thanks-tallyerp9">Thanks for your payment!</p>
+                    </div>
+                </div>
+
+                <!-- Cheque Writer -->
+                <div class="product-card" id="chequewriter">
+                    <div class="product-image-wrapper">
+                        <img src="https://i.ibb.co/YFpsq54d/2c3aa42b1da2db6d92c8ce927ea4af5e.png" alt="Cheque Writer" class="product-image">
+                        <div class="qr-code" id="qr-chequewriter">
+                            <img src="https://i.ibb.co/b5cvVNV2/Whats-App-Image-2025-02-21-at-10-07-51-AM.jpg" alt="QR Code">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cheque Writer</h3>
+                        <p>Easy-to-use software for printing cheques (supports all Nepali banks).</p>
+                        <p class="price">Price: Rs 2000</p>
+                        <button class="purchase-btn" onclick="toggleQR('qr-chequewriter')">Pay Now</button>
+                        <button class="screenshot-btn" id="screenshot-btn-chequewriter" onclick="sendScreenshot('chequewriter')">
+                            Click here to send Screenshot & AnyDesk ID, installation message - installation will be done with AnyDesk after payment receipt
+                        </button>
+                        <p class="thanks-message" id="thanks-chequewriter">Thanks for your payment!</p>
                     </div>
                 </div>
 
