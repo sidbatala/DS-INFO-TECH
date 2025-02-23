@@ -236,3 +236,80 @@ function scrollToContact() {
     const contactSection = document.getElementById('contact');
     contactSection.scrollIntoView({ behavior: 'smooth' });
 }
+
+// Greeting Message
+function updateGreeting() {
+    const greetingElement = document.getElementById('greeting');
+    const now = new Date();
+    const hour = now.getHours();
+    let greeting = '';
+    let icon = '';
+    let color = '';
+
+    if (hour >= 5 && hour < 12) {
+        greeting = 'Good Morning';
+        icon = '☀️';
+        color = '#FFD700'; // Gold
+    } else if (hour >= 12 && hour < 18) {
+        greeting = 'Good Afternoon';
+        icon = '🌤️';
+        color = '#FFA500'; // Orange
+    } else if (hour >= 18 && hour < 22) {
+        greeting = 'Good Evening';
+        icon = '🌙';
+        color = '#FF6347'; // Tomato
+    } else {
+        greeting = 'Good Night';
+        icon = '🌌';
+        color = '#1E90FF'; // Dodger Blue
+    }
+
+    greetingElement.innerHTML = `${icon} ${greeting}`;
+    greetingElement.style.color = color;
+}
+
+// Update greeting every minute
+setInterval(updateGreeting, 60000);
+updateGreeting(); // Initial call
+
+// Load More Reviews on Scroll
+let reviewsLoaded = 10;
+const reviews = [
+    // Add your reviews here
+];
+
+function loadMoreReviews() {
+    const reviewsContainer = document.getElementById('reviewsContainer');
+    for (let i = reviewsLoaded; i < reviewsLoaded + 10 && i < reviews.length; i++) {
+        const reviewCard = document.createElement('div');
+        reviewCard.classList.add('review-card');
+        reviewCard.innerHTML = `
+            <h4>${reviews[i].name}</h4>
+            <p>${reviews[i].text}</p>
+            <div class="emoji-reactions">
+                <span onclick="reactToReview(this, '👍')">👍</span>
+                <span onclick="reactToReview(this, '❤️')">❤️</span>
+                <span onclick="reactToReview(this, '😄')">😄</span>
+                <span onclick="reactToReview(this, '😲')">😲</span>
+            </div>
+            <div class="review-actions">
+                <button onclick="likeReview(this)">Like</button>
+                <span class="like-count">0 Likes</span>
+                <button onclick="replyToReview(this)">Reply</button>
+            </div>
+        `;
+        reviewsContainer.appendChild(reviewCard);
+    }
+    reviewsLoaded += 10;
+}
+
+// Load initial reviews
+loadMoreReviews();
+
+// Load more reviews on scroll
+window.addEventListener('scroll', () => {
+    const reviewsList = document.querySelector('.reviews-list');
+    if (reviewsList.scrollTop + reviewsList.clientHeight >= reviewsList.scrollHeight) {
+        loadMoreReviews();
+    }
+});
