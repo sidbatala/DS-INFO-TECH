@@ -235,6 +235,23 @@ input:checked + .slider:before {
     opacity: 0.8;
 }
 
+/* Greeting Message */
+#greeting {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -849,6 +866,8 @@ footer p {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px var(--card-shadow);
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .reviews-list h3 {
@@ -862,16 +881,35 @@ footer p {
     border-radius: 5px;
     margin-bottom: 1rem;
     box-shadow: 0 2px 4px var(--card-shadow);
+    border: 1px solid #ddd;
 }
 
 .review-card h4 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    color: var(--primary-color);
 }
 
 .review-card p {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.review-card .emoji-reactions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.review-card .emoji-reactions span {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.review-card .emoji-reactions span:hover {
+    transform: scale(1.2);
 }
 
 .review-card .review-actions {
@@ -881,17 +919,15 @@ footer p {
 }
 
 .review-card .review-actions button {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: transparent;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
 }
 
 .review-card .review-actions button:hover {
-    background-color: var(--primary-hover);
+    transform: scale(1.2);
 }
 
 .review-card .review-actions .like-count {
