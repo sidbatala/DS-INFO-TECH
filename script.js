@@ -48,14 +48,14 @@ function sendScreenshot(productId) {
     screenshotBtn.style.display = 'none';
     thanksMessage.style.display = 'block';
 
-    // Hide Thanks Message after 2 seconds with fade-out animation
+    // Hide Thanks Message after 5 seconds with fade-out animation
     setTimeout(() => {
         thanksMessage.classList.add('fade-out');
         setTimeout(() => {
             thanksMessage.style.display = 'none';
             thanksMessage.classList.remove('fade-out');
         }, 500); // Fade-out duration
-    }, 2000); // Display duration
+    }, 5000); // Display duration
 
     // Redirect to WhatsApp
     window.open(`https://wa.me/9803282511?text=Here%20is%20the%20screenshot%20of%20the%20payment%20for%20${productId}.%20My%20AnyDesk%20ID%20is%20[Your%20AnyDesk%20ID].%20Please%20proceed%20with%20the%20installation.`, '_blank');
@@ -144,20 +144,31 @@ form.addEventListener('submit', function (e) {
             let json = await response.json();
             if (response.status == 200) {
                 result.innerHTML = "Form submitted successfully";
+                result.style.color = "green";
                 // Show paper plane animation
                 const paperPlane = document.getElementById('paper-plane');
                 paperPlane.style.display = 'block';
                 setTimeout(() => {
                     paperPlane.style.display = 'none';
-                }, 2000); // Hide after 2 seconds
+                }, 7000); // Hide after 7 seconds
+                // Fade out success message after 5 seconds
+                setTimeout(() => {
+                    result.classList.add('fade-out');
+                    setTimeout(() => {
+                        result.style.display = "none";
+                        result.classList.remove('fade-out');
+                    }, 500); // Fade-out duration
+                }, 5000); // Display duration
             } else {
                 console.log(response);
                 result.innerHTML = json.message;
+                result.style.color = "red";
             }
         })
         .catch(error => {
             console.log(error);
             result.innerHTML = "Something went wrong!";
+            result.style.color = "red";
         })
         .then(function () {
             form.reset();
@@ -166,3 +177,62 @@ form.addEventListener('submit', function (e) {
             }, 3000);
         });
 });
+
+// Review System
+const reviewForm = document.getElementById('reviewForm');
+const reviewsContainer = document.getElementById('reviewsContainer');
+
+reviewForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('reviewName').value;
+    const text = document.getElementById('reviewText').value;
+
+    if (name && text) {
+        const reviewCard = document.createElement('div');
+        reviewCard.classList.add('review-card');
+        reviewCard.innerHTML = `
+            <h4>${name}</h4>
+            <p>${text}</p>
+            <div class="emoji-reactions">
+                <span onclick="reactToReview(this, '👍')">👍</span>
+                <span onclick="reactToReview(this, '❤️')">❤️</span>
+                <span onclick="reactToReview(this, '😄')">😄</span>
+                <span onclick="reactToReview(this, '😲')">😲</span>
+            </div>
+            <div class="review-actions">
+                <button onclick="likeReview(this)">Like</button>
+                <span class="like-count">0 Likes</span>
+                <button onclick="replyToReview(this)">Reply</button>
+            </div>
+        `;
+        reviewsContainer.appendChild(reviewCard);
+        reviewForm.reset();
+    }
+});
+
+function reactToReview(emojiElement, emoji) {
+    alert(`You reacted with ${emoji}`);
+}
+
+function likeReview(button) {
+    const likeCount = button.nextElementSibling;
+    let count = parseInt(likeCount.textContent);
+    likeCount.textContent = `${++count} Likes`;
+}
+
+function replyToReview(button) {
+    const reviewCard = button.closest('.review-card');
+    const replyText = prompt('Enter your reply:');
+    if (replyText) {
+        const replyDiv = document.createElement('div');
+        replyDiv.classList.add('review-reply');
+        replyDiv.innerHTML = `<p>${replyText}</p>`;
+        reviewCard.appendChild(replyDiv);
+    }
+}
+
+// Smooth Scroll to Contact Section
+function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+}
